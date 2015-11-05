@@ -5,7 +5,7 @@
 # Gungho Full Stack Test
 EmployeeList API and Administration Panel. Designed by [planlodge](https://github.com/planlodge).
 
-![GIF](http://planlodge.com/github/record.gif)
+![GIF](https://github.com/planlodge/Gungho-Test/raw/master/demo/emgif.gif)
 
 ## Features
 
