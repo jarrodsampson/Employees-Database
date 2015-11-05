@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/stevenbenner/jquery-powertip.svg?branch=master)](https://travis-ci.org/stevenbenner/jquery-powertip)
-![Release Version](http://img.shields.io/github/release/stevenbenner/jquery-powertip.svg)
+![Release Version](https://img.shields.io/badge/Release-v1.0-brown.svg)
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
 # Gungho Full Stack Test
