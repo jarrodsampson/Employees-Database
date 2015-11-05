@@ -1,0 +1,199 @@
+<title>| Gungho {{titleSet}} </title>
+<div class="wrapper row-centered center-block" tooltips>
+
+
+    <div ng-show="isLoggedIn" class="btn-group">
+        <a ng-click="logout()" class="btn btn-primary btn-md" data-toggle="tooltip" data-placement="top" title="Logout Securely"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        <a class="btn btn-primary btn-md" data-toggle="modal" data-target="#aboutApp"><span data-toggle="tooltip" data-placement="top" title="Add New Employee"> <span class="glyphicon glyphicon glyphicon-plus"></span> Add Employee</span></a>
+        <a class="btn btn-primary btn-md" data-toggle="modal" data-target="#deleteEmp"><span data-toggle="tooltip" data-placement="top" title="Delete Existing Employee"><span class="glyphicon glyphicon-trash"></span> Delete Employee </span></a>
+        <a class="btn btn-primary btn-md" ng-click="graphData()"><span data-toggle="tooltip" data-placement="top" title="Show Employee Graph"><span class="glyphicon glyphicon-signal"></span> Graphical Data </span></a>
+        <hr />
+    </div>
+
+
+    <section ng-show="showGraphData" class="slider">
+        <div fusioncharts width="600" height="300" type="pie3d" dataSource="{{myDataSource}}">
+        </div>
+    </section>
+
+    <hr />
+
+    <section id="options" ng-hide="showOptions" class="row col-md-12 row-centered well">
+        <p class="">Search Filters: <span class="glyphicon glyphicon-filter"></span> </p>
+        <div class="form-group col-md-6">
+            <div class="input-group" data-toggle="tooltip" data-placement="top" title="Find a specific Employee">
+                <span class="input-group-addon" id="sizing-addon2">Searching:</span>
+                <input ng-model="name" type="search" class="form-control" id="searchInput" placeholder="Search Employees">
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <div class="input-group" data-toggle="tooltip" data-placement="top" title="Number of Results Displayed">
+                <span class="input-group-addon" id="sizing-addon2">Number of Results Displayed:</span>
+                <input ng-model="quantity" type="number" class="form-control" value="10" id="limitInput" placeholder="Number of Results">
+            </div>
+        </div>
+    </section>
+
+    <section id="tableStart" class="row col-md-12 row-centered">
+        <h4>{{welcomeMessage}} {{SearchDescription}}</h4>
+    </section>
+
+
+    <section class="row col-md-12 row-centered" ng-show="employerTable">
+        <table class="table table-striped table-hover employeeTable">
+            <tr>
+                <th>
+                    <a href="" ng-click="order('ID')" data-toggle="tooltip" data-placement="top" title="Employee Identification Number">Emp. ID</a>
+                    <span class="glyphicon glyphicon-triangle-bottom" ng-show="predicate === 'ID'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="order('LastName')" data-toggle="tooltip" data-placement="top" title="Last Name, Surname.">Last Name</a>
+                    <span class="glyphicon glyphicon-triangle-bottom" ng-show="predicate === 'LastName'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="order('FirstName')" data-toggle="tooltip" data-placement="top" title="First Name">First Name</a>
+                    <span class="glyphicon glyphicon-triangle-bottom" ng-show="predicate === 'FirstName'" ng-class="{reverse:reverse}"></span>
+                </th>
+                <th>
+                    <a href="" ng-click="order('HireDate')" data-toggle="tooltip" data-placement="top" title="Employee Start Date">Hire Date</a>
+                    <span class="glyphicon glyphicon-triangle-bottom" ng-show="predicate === 'HireDate'" ng-class="{reverse:reverse}"></span>
+                </th>
+            </tr>
+            <tr ng-repeat="item in employeeListFilter = (employeeList | filter:searchingFilterActive | limitTo:quantity | orderBy:predicate:reverse)" bs-popover tooltips>
+                <td class="hand col-md-3">
+                    <span><a href="javascript:" id="pop{{item.ID}}" class="" rel="popover" data-content="Hire Date: {{item.HireDate}} <br /> Birth Date: {{item.BirthDate}} <br /> Gender: {{item.Gender}}" data-trigger="focus" data-original-title="<strong>{{item.FirstName}} {{item.LastName}}'s Details</strong>">{{item.ID}}</a></span>
+                </td>
+                <td class="hand col-md-3">
+                    <span ng-hide="item.editing" ng-dblclick="editItem(item)">{{item.LastName | capitalize}}</span>
+                    <input ng-show="item.editing" ng-model="item.LastName" ng-blur="doneEditing(item)" autofocus />
+                </td>
+                <td class="col-md-3">
+                    <span ng-hide="item.editing" ng-dblclick="editItem(item)">{{item.FirstName | capitalize}}</span>
+                    <input ng-show="item.editing" ng-model="item.FirstName" ng-blur="doneEditing(item)" autofocus />
+                </td>
+                <td class="col-md-3">
+                    <span ng-hide="item.editing" ng-dblclick="editItem(item)">{{item.HireDate}}</span>
+                    <input ng-show="item.editing" ng-model="item.HireDate" ng-blur="doneEditing(item)" autofocus datepicker />
+                </td>
+            </tr>
+            <tr ng-if="employeeListFilter.length==0">
+                <td>
+                    <p>No Results found.</p>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="row col-md-12 row-centered">
+        <div class="push"></div>
+    </section>
+
+    <footer class="footer col-md-12">
+        <div class="container">
+            <p class="text-muted">Gungho Admin Panel Comprehensive Employee List 2015</p>
+        </div>
+    </footer>
+
+</div>
+
+
+
+<div class="scroll-up"><a ng-click="toTop()"><span class="glyphicon glyphicon-eject"></span></a></div>
+
+
+
+<!-- About App Modal -->
+<!-- Modal -->
+<div class="modal fade" id="aboutApp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add New Employee</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="addEmp" name="addEmp" novalidate>
+
+                    <div class="form-group" ng-class="{ 'has-error' : addEmp.userID.$invalid && !addEmp.userID.$pristine }">
+                        <label for="id">ID:</label>
+                        <input class="form-control" id="id" type="text" name="userID" ng-model="user.id" maxlength="5" required placeholder="Employee ID" ng-pattern="/^\d{5,5}$/" />
+                        <p class="help-block" ng-show="addEmp.userID.$error.pattern">Employee ID Must Be 5 Digits.</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : addEmp.genderT.$invalid && !addEmp.userID.$pristine }">
+                        <label for="id">Gender:</label>
+                        <select class="form-control" name="genderT" ng-model="user.gender" required>
+                            <option value="M" selected>Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                        <p class="help-block" ng-show="addEmp.genderT.$error.required && !addEmp.genderT.$dirty">Gender Required.</p>
+                    </div>
+
+                    <div class="row col-md-12">
+
+                        <div class="form-group row col-md-12" ng-class="{ 'has-error' : addEmp.empLastName.$invalid && !addEmp.empLastName.$pristine }">
+                            <label for="first">Name:</label>
+                        </div>
+                        <div class="form-group row col-md-6" ng-class="{ 'has-error' : addEmp.empFirstName.$invalid && !addEmp.empFirstName.$pristine }">
+                            <input class="form-control" id="first" name="empFirstName" type="text" ng-model="user.first" required placeholder="First Name" ng-pattern="/^(\D)+$/" />
+                        </div>
+                        <div class="form-group row col-md-6" ng-class="{ 'has-error' : addEmp.empLastName.$invalid && !addEmp.empLastName.$pristine }">
+                            <input class="form-control" id="last" name="empLastName" type="text" ng-model="user.last" required placeholder="Last Name" ng-pattern="/^(\D)+$/" />
+                        </div>
+                        <div class="form-group row col-md-12" ng-class="{ 'has-error' : addEmp.empLastName.$invalid && !addEmp.empLastName.$pristine }">
+                            <p class="help-block" ng-show="addEmp.empFirstName.$error.pattern">Employee First Name Must Be Valid.</p>
+                            <p class="help-block" ng-show="addEmp.empLastName.$error.pattern">Employee Last Name Must Be Valid.</p>
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="birthDate">Birth Date:</label>
+                            <input class="form-control" id="birthDate" type="text" datepicker ng-model="user.birthDate" required placeholder="Birth Date" />
+                        </div>
+                        <div class="form-group row col-md-6">
+                            <label for="hireDate">Hire Date:</label>
+                            <input class="form-control" id="hireDate" type="text" datepicker ng-model="user.hireDate" required placeholder="Hire Date" />
+                        </div>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button ng-disabled="addEmp.$invalid" type="submit" class="btn btn-primary" ng-click='addEmploy()'>Add Employee</button>
+                </form>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteEmp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Remove Employee</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="deleteEmp" name="deleteEmp" novalidate>
+
+                    <div class="form-group" ng-class="{ 'has-error' : deleteEmp.deleteUserID.$invalid && !deleteEmp.deleteUserID.$pristine }">
+                        <label for="id">Enter an Employee ID:</label>
+                        <input class="form-control" id="id" type="text" name="deleteUserID" ng-model="user.deleteUserID" maxlength="5" required placeholder="Employee ID" ng-pattern="/^\d{5,5}$/" />
+                        <p class="help-block" ng-show="deleteEmp.deleteUserID.$error.pattern">Employee ID Must Be 5 Digits.</p>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button ng-disabled="deleteEmp.$invalid" type="submit" class="btn btn-primary" ng-click='deleteEmploy()'>Delete Employee</button>
+                </form>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

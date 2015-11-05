@@ -1,0 +1,19 @@
+<title>| Gungho {{titleSet}} </title>
+<div class="row col-md-12 centeredOne center well">
+	<h2>Login</h2>
+	<p>{{loginMessage}}</p>
+    <form id="loginGung" name="loginGung" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-error' : loginGung.username.$invalid && !loginGung.username.$pristine }">
+            <label for="username">Username:</label>
+            <input class="form-control" id="username" type="text" name="username" ng-model="user.username" maxlength="50" required placeholder="Username" />
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : loginGung.password.$invalid && !loginGung.password.$pristine }">
+            <label for="password">Password:</label>
+            <input class="form-control" id="password" type="password" name="password" ng-model="user.password" maxlength="50" required placeholder="Password" />
+        </div>
+        <p><a href="#help">Need Help? Click Here</a></p>
+        <button ng-disabled="loginGung.$invalid" type="submit" class="btn btn-primary" ng-click='attemptLogin()'><span class="glyphicon glyphicon-log-in"></span> Login</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+    </form>
+</div>
