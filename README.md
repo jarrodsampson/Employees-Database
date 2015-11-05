@@ -22,9 +22,9 @@ EmployeeList API and Administration Panel. Designed by [planlodge](https://githu
 	
 **Link to Employee Admin Panel**
 
-[Employee Admin Panel](http://planlodge.com/gungho-portal/).
+[Employee Admin Panel](http://planlodge.com/gungho-portal/)
 
-> Internet Explorer and Firefox do not currently support the css clip feature. Must have availability to use webkits.
+> Please Refer to [the help section](http://planlodge.com/gungho-portal/#/help/) for more details.
 
 ## License
 
