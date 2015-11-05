@@ -7,11 +7,11 @@ EmployeeList API and Administration Panel. Designed by [planlodge](https://githu
 
 ![GIF](http://planlodge.com/github/record.gif)
 
-## Getting Started
+## Features
 
- 1. Include jQuery in your code.
- 2. Download and include the transimg.js file.
- 3. Pick your selector and apply transimg method.
+ - Include jQuery in your code.
+ - Download and include the transimg.js file.
+ - Pick your selector and apply transimg method.
 
 ## Example
 
