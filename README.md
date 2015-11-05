@@ -1,9 +1,9 @@
-# Gungho Full Stack Test
-EmployeeList API and Administration Panel. Designed by [planlodge](https://github.com/planlodge).
-
 [![Build Status](https://travis-ci.org/stevenbenner/jquery-powertip.svg?branch=master)](https://travis-ci.org/stevenbenner/jquery-powertip)
 ![Release Version](http://img.shields.io/github/release/stevenbenner/jquery-powertip.svg)
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
+
+# Gungho Full Stack Test
+EmployeeList API and Administration Panel. Designed by [planlodge](https://github.com/planlodge).
 
 ![GIF](http://planlodge.com/github/record.gif)
 
@@ -17,9 +17,8 @@ EmployeeList API and Administration Panel. Designed by [planlodge](https://githu
  - Notifications
  - Login Ability
 
-## Example
+## Administration Panel
 
-	
 **Link to Employee Admin Panel**
 
 [Employee Admin Panel](http://planlodge.com/gungho-portal/)
