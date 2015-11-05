@@ -9,9 +9,13 @@ EmployeeList API and Administration Panel. Designed by [planlodge](https://githu
 
 ## Features
 
- - Include jQuery in your code.
- - Download and include the transimg.js file.
- - Pick your selector and apply transimg method.
+ - Responsive Bootstrap Theme.
+ - Create, Update, and Delete Employees.
+ - Search Filters.
+ - Pie Chart Graph
+ - Built on AngularJS
+ - Notifications
+ - Login Ability
 
 ## Example
 
