@@ -25,6 +25,11 @@ EmployeeList API and Administration Panel. Designed by [planlodge](https://githu
 
 > Please Refer to [the help section](http://planlodge.com/gungho-portal/#/help/) for more details.
 
+## Employee API
+
+> Check out [this link to view API in JSON format.](http://www.planlodge.com/gungho-portal/xxzy/json/v1/)
+> Check out [this link to view API in XML format.](http://www.planlodge.com/gungho-portal/xxzy/xml/v1/)
+
 ## License
 
 Licensed under the [MIT license](http://opensource.org/licenses/MIT).
