@@ -25,6 +25,8 @@ EmployeeList API and Administration Panel. Designed by [planlodge](https://githu
 
 > Please Refer to [the help section](http://planlodge.com/gungho-portal/#/help/) for more details.
 
+> Check this out running on [Google App Engine](http://gunghoapp-9999.appspot.com/)!.
+
 ## Employee API
 
 > Check out [this link to view API in JSON format.](http://www.planlodge.com/gungho-portal/xxzy/json/v1/)
