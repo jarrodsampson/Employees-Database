@@ -2,8 +2,8 @@
 ![Release Version](https://img.shields.io/badge/Release-v1.0-brown.svg)
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
-# Gungho Full Stack Test
-EmployeeList API and Administration Panel. Designed by [planlodge](https://github.com/planlodge).
+# Employee Database
+Mock EmployeeList API and Administration Panel. Designed by [planlodge](https://github.com/planlodge).
 
 ![GIF](https://github.com/planlodge/Gungho-Test/raw/master/demo/emgif.gif)
 
